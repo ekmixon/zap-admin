@@ -7,6 +7,7 @@ Currently uses a hardcoded version file - expect to change this when its moved i
 For now it should be run from the top of the zap-admin repo and the contents copied into the add-ons.txt file.
 """
 
+
 import xml.etree.ElementTree as ET
 
 versions_file = "ZapVersions-2.11.xml"
@@ -23,5 +24,5 @@ tree = ET.parse(versions_file)
 root = tree.getroot()
 
 for ao in addons:
-    addon_node = root.find('addon_' + ao)
+    addon_node = root.find(f'addon_{ao}')
     print(addon_node.find('url').text + " " + addon_node.find('hash').text.split(":")[1])
